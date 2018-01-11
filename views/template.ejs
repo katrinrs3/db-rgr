@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <table class="table_dark">
+
+      <tr>
+          <% for(var object of objectsNames) { %>
+            <th class="tg-yw4l"> <%= object %> </th>
+          <% } %>
+      </tr>
+
+
+       <% objects.forEach((object, index, array) => { %>
+        <tr>
+          <% for(var key in object) { %>
+            <td class="tg-yw4l"> <%= object[key] %> </td>
+          <% } %>
+        </tr>
+        <% }); %>
+
+    </table>
+
+
+    <div class="actions">
+
+      <div class="delete-item">
+        <form method="get" action="/table/delete">
+          <input type="hidden" name="table" value="<%= header %>">
+          <label> Укажите ID для удаления записи
+            <input name="deleteId" type="text">
+          </label>
+          <input value="Удалить" type="submit">
+        </form>
+      </div>
+
+      <div class="update-item">
+        <form method="get" action="/table/update">
+          <input type="hidden" name="table" value="<%= header %>">
+          <label> Укажите ID для обновления записи
+            <input name="updateId" type="text">
+          </label>
+          <input value="Изменить" type="submit">
+        </form>
+      </div>
+
+      <div class="new-item">
+        <form method="get" action="/table/new">
+          <input type="hidden" name="table" value="<%= header %>">
+          <input type="submit" value="НОВАЯ ЗАПИСЬ">
+        </form>
+      </div>
+    </div>
+
+
+  </body>
+</html>
